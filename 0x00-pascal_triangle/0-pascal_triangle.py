@@ -1,49 +1,26 @@
 #!/usr/bin/python3
 
-# Define the pascal_triangle function that takes an integer n
 def pascal_triangle(n):
-    # Check if n is less than or equal to 0, return an empty list
-    if n <= 0:
-        return []
+    '''
+    Creates a list of lists of integers representing
+    the Pascal's triangle of a given integer.
+    '''
+    triangle = []  # Initialize an empty list to store the triangle
+    if type(n) is not int or n <= 0:  # Check if n is a positive integer
+        return triangle  # Return an empty triangle if n is invalid
+    for i in range(n):  # Iterate from 0 to n-1 to construct each row
+        line = []  # Initialize an empty list for the current row
+        for j in range(i + 1):  # Iterate from 0 to i to construct each element in the row
+            if j == 0 or j == i:  # The first and last elements of each row are always 1
+                line.append(1)
+            elif i > 0 and j > 0:  # For other elements, calculate the sum of two elements from the previous row
+                line.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
+        triangle.append(line)  # Append the completed row to the triangle
+    return triangle  # Return the Pascal's triangle as a list of lists
 
-    # Initialize the Pascal's triangle with the base row [1]
-    triangle = [[1]]
-
-    # Generate subsequent rows of the triangle
-    for i in range(1, n):
-        # Get the previous row of the triangle
-        prev_row = triangle[i - 1]
-
-        # Create a new row and start with 1 as the first element
-        curr_row = [1]
-
-        # Calculate the elements between the first and last elements of the row
-        for j in range(1, i):
-            # Add the adjacent elements from the previous row to get the current element
-            curr_row.append(prev_row[j - 1] + prev_row[j])
-
-        # Add 1 as the last element of the row
-        curr_row.append(1)
-
-        # Add the current row to the triangle
-        triangle.append(curr_row)
-
-    # Return the generated Pascal's triangle
-    return triangle
-
-
-# Define the print_triangle function to print the Pascal's triangle
-def print_triangle(triangle):
-    # Iterate over each row of the triangle
-    for row in triangle:
-        # Convert each element in the row to a string and join them with commas
-        row_str = ",".join([str(x) for x in row])
-        # Print the row in the desired format
-        print("[{}]".format(row_str))
-
-
-# Execute the code if the script is run directly
-if __name__ == "__main__":
-    # Generate Pascal's triangle with 5 rows and print it
-    print_triangle(pascal_triangle(5))
+# Test the function
+num_rows = 5
+result = pascal_triangle(num_rows)  # Generate Pascal's triangle with 5 rows
+for row in result:  # Iterate over each row in the triangle
+    print(row)  # Print the row
 
