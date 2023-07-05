@@ -3,6 +3,7 @@
    of lists can be opened using keys stored in the lists
 """
 
+
 def canUnlockAll(boxes):
     """Determines if boxes can be unlocked"""
     position = 0
