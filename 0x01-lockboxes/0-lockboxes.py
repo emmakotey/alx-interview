@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Defines a function that determines if a box containing a list
-   of lists can be opened using keys stored in the lists
+"""This function accertains if a box containing a list
+   can be opened using keys stored in those lists
 """
 
 
