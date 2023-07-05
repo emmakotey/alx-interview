@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""This function is to check if a box, which holds a list comprised 
-    of other lists, can be unlocked using the keys stored within those lists
+"""This function is to check if a box, which holds 
+    a list comprised of other lists, can be 
+    unlocked using the keys stored within those 
+    lists
 """
 
 
