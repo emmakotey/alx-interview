@@ -5,6 +5,7 @@
 """
 
 
+
 def canUnlockAll(boxes):
     """Determines if boxes can be unlocked"""
     position = 0
