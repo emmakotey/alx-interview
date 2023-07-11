@@ -23,5 +23,5 @@ def minOperations(n):
 
 if __name__ == "__main__":
     n = 9
-    print("Min number of operations to reach {} characters: {}"
-            .format(n, minOperations(n)))
+    print("Min number of operations to reach {} characters:{}".
+          format(n, minOperations(n)))
