@@ -1,44 +1,49 @@
 #!/usr/bin/python3
+"""
+    script that reads stdin line by line and computes metrics
+"""
 import sys
 
-def print_stats(total_size, status_codes):
-    print("File size: {}".format(total_size))
-    sorted_status_codes = sorted(status_codes.keys())
-    for code in sorted_status_codes:
-        print("{}: {}".format(code, status_codes[code]))
 
-def parse_line(line):
-    parts = line.split()
-    if len(parts) >= 9:
-        ip_address = parts[0]
-        date = parts[3][1:]
-        status_code = parts[-2]
-        file_size = int(parts[-1])
-        return ip_address, date, status_code, file_size
-    return None, None, None, None
+def print_msg(codes, file_size):
+    print("File size: {}".format(file_size))
+    for key, val in sorted(codes.items()):
+        if val != 0:
+            print("{}: {}".format(key, val))
 
-def main():
-    total_size = 0
-    status_codes = {}
 
-    try:
-        for line_count, line in enumerate(sys.stdin, 1):
-            ip, _, status_code, file_size = parse_line(line.strip())
-            if ip and status_code and isinstance(file_size, int):
-                total_size += file_size
-                if status_code in status_codes:
-                    status_codes[status_code] += 1
-                else:
-                    status_codes[status_code] = 1
+file_size = 0
+code = 0
+count_lines = 0
+codes = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
 
-            if line_count % 10 == 0:
-                print_stats(total_size, status_codes)
+try:
+    for line in sys.stdin:
+        parsed_line = line.split()
+        parsed_line = parsed_line[::-1]
 
-    except KeyboardInterrupt:
-        pass  # Continue processing even if interrupted with CTRL + C
+        if len(parsed_line) > 2:
+            count_lines += 1
 
-    print_stats(total_size, status_codes)
+            if count_lines <= 10:
+                file_size += int(parsed_line[0])
+                code = parsed_line[1]
 
-if __name__ == "__main__":
-    main()
+                if (code in codes.keys()):
+                    codes[code] += 1
 
+            if (count_lines == 10):
+                print_msg(codes, file_size)
+                count_lines = 0
+
+finally:
+    print_msg(codes, file_size)
