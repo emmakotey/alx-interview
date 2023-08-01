@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Queens problem solved
+"""
 import sys
 
 
