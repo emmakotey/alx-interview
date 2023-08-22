@@ -7,8 +7,7 @@ the fewest number of coins needed to meet a given amount total.
 
 def makeChange(coins, total):
     """
-    This function Returns the minimum number of coins
-    needed to meet a given total
+    Making Change function Code
     """
     if total <= 0:
         return 0
