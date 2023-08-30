@@ -11,12 +11,7 @@ bound_1 = set()
 
 
 def boundary(grid, i, j):
-    """Find cells with either 4, 3, 2 or 1 exposed boundary and add them to
-       appropriate set
-       Args:
-           grid (list): 2d list
-           i (int): row number
-           j (int): column number
+    """This function works by conparing conditions.
     """
     boundaries = 0
     try:
