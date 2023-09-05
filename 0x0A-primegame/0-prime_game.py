@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """
-Define isWineer function, a solution to the Prime Game problem
+The Prime Game 
 """
 
 
 def primes(n):
-    """Return list of prime numbers between 1 and n inclusive
-       Args:
-        n (int): upper boundary of range. lower boundary is always 1
+    """ returns a prime number 
     """
     prime = []
     sieve = [True] * (n + 1)
@@ -21,12 +19,7 @@ def primes(n):
 
 def isWinner(x, nums):
     """
-    Determines winner of Prime Game
-    Args:
-        x (int): no. of rounds of game
-        nums (int): upper limit of range for each round
-    Return:
-        Name of winner (Maria or Ben) or None if winner cannot be found
+    This is where the winner of the Game is identified
     """
     if x is None or nums is None or x == 0 or nums == []:
         return None
