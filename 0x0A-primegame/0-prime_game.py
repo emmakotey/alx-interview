@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-The Prime Game 
+The Prime Game
 """
 
 
 def primes(n):
-    """ returns a prime number 
+    """ returns a prime number
     """
     prime = []
     sieve = [True] * (n + 1)
